@@ -1,4 +1,4 @@
-#include "Scheduler.h"
+#include "src/Scheduler.h"
 #include "ftxui/component/captured_mouse.hpp"
 #include "ftxui/component/component.hpp"
 #include "ftxui/component/screen_interactive.hpp"
@@ -16,6 +16,13 @@
 
 using namespace ftxui;
 
+
+/** 
+ * @brief Convert Status enum to human-readable string.
+ *
+ * @param s Status enum value.
+ * @return std::string Corresponding string representation.
+*/
 std::string statusToString(Status s) {
     switch (s) {
         case Status::Staged: return "Staged";
@@ -24,6 +31,11 @@ std::string statusToString(Status s) {
         default: return "Unknown";
     }
 }
+
+
+// -------------------------
+// MAIN FUNCTION
+// -------------------------
 
 int main() {
     Scheduler scheduler;
@@ -130,7 +142,8 @@ int main() {
         // Build task display based on selected view
         Elements task_display;
         
-        if (selected == 3) { // Staged Tasks
+        if (selected == 3) { 
+            // Staged Tasks
             task_display.push_back(text("Staged Tasks") | bold | color(Color::Cyan));
             task_display.push_back(separator());
             auto& tasks = scheduler.getStagedTasks();
@@ -142,7 +155,8 @@ int main() {
                         " | " + std::to_string(t.estimatedDurationSeconds) + " sec"));
                 }
             }
-        } else if (selected == 4) { // Active Tasks
+        } else if (selected == 4) { 
+            // Active Tasks
             task_display.push_back(text("Active Tasks") | bold | color(Color::Yellow));
             task_display.push_back(separator());
             auto& tasks = scheduler.getActiveTasks();
@@ -154,7 +168,8 @@ int main() {
                         " | " + std::to_string(t.estimatedDurationSeconds) + " sec"));
                 }
             }
-        } else if (selected == 5) { // Finished Tasks
+        } else if (selected == 5) { 
+            // Finished Tasks
             task_display.push_back(text("Finished Tasks") | bold | color(Color::Green));
             task_display.push_back(separator());
             auto& tasks = scheduler.getFinishedTasks();
