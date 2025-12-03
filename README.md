@@ -1,9 +1,8 @@
-# Simple Job Scheduler (C++ implementation)
+# Simple Task Scheduler (C++ implementation)
 > Made by - Subhajit Das (60) & Saksham Kumar Gupta (50)
 ---
 
-This project implements a Job Scheduler using C++ to manage the lifecycle of tasks with both a console-based CLI and an enhanced FTXUI-based graphical terminal interface. Tasks transition through three distinct states: **Staged** (waiting to start), **Active** (in progress), and **Finished** (completed).
-
+This project implements a Task Scheduler using C++ to manage the lifecycle of tasks with both a console-based CLI and an enhanced FTXUI-based graphical terminal interface. Tasks transition through three distinct states: **Staged** (waiting to start), **Active** (in progress), and **Finished** (completed).
 The application features:
 - **Modular object-oriented design** with separation of concerns
 - **Two user interfaces**: Classic CLI and modern FTXUI TUI
@@ -97,6 +96,9 @@ An enhanced terminal user interface featuring:
 ### Prerequisites
 - **C++17 compiler** (g++ or clang++)
 - **FTXUI library** (included in the repository under `FTXUI/` directory)
+```git
+git clone https://github.com/ArthurSonzogni/FTXUI.git
+```
 
 ### Building the FTXUI Library
 
@@ -105,7 +107,7 @@ cd FTXUI
 mkdir build
 cd build
 cmake ..
-cmake --build . --config Release
+cmake --build .
 cd ../..
 ```
 
@@ -113,7 +115,7 @@ cd ../..
 
 **FTXUI Version:**
 ```bash
-g++ -std=c++17 -o scheduler_ftxui main_ftxui.cpp Scheduler.cpp -I./FTXUI/include -L./FTXUI/build -lftxui-component -lftxui-dom -lftxui-screen
+g++ -std=c++17 -o scheduler_ftxui main_ftxui.cpp src/Scheduler.cpp -I./FTXUI/include -L./FTXUI/build -lftxui-component -lftxui-dom -lftxui-screen
 ```
 
 ---
